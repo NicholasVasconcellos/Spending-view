@@ -806,5 +806,6 @@
     if (!restoreDataset()) renderAll();
   }
 
-  document.addEventListener('DOMContentLoaded', boot);
+  if (document.readyState !== 'loading') boot();
+  else document.addEventListener('DOMContentLoaded', boot);
 })(window.SV);
