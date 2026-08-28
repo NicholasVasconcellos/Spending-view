@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Spending View</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='16' width='6' height='12' rx='2' fill='%232a78d6'/%3E%3Crect x='13' y='9' width='6' height='19' rx='2' fill='%232a78d6'/%3E%3Crect x='22' y='3' width='6' height='25' rx='2' fill='%23eb6834'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="sv-header">
+    <div class="sv-header-inner">
+      <h1 class="sv-logo">Spending View</h1>
+      <div class="sv-header-actions">
+        <button id="btn-load" class="sv-btn sv-btn-primary" type="button">Load CSV files</button>
+        <button id="btn-sample" class="sv-btn" type="button">Sample data</button>
+        <button id="btn-clear" class="sv-btn" type="button" hidden>Clear data</button>
+        <button id="btn-theme" class="sv-btn" type="button" aria-label="Toggle color theme">◐ Auto</button>
+      </div>
+    </div>
+  </header>
+
+  <input id="file-input" type="file" accept=".csv,text/csv" multiple hidden>
+
+  <main class="sv-main">
+    <section id="empty-state" class="sv-empty">
+      <h2>Understand where your money goes</h2>
+      <p>
+        Load one or more card CSV exports — Apple Card exports and generic card
+        exports (with a <em>Raw Merchant Name</em> column) are detected
+        automatically and merged into one view. Everything runs in your browser;
+        no data leaves this page.
+      </p>
+      <div class="sv-empty-actions">
+        <button id="btn-load-empty" class="sv-btn sv-btn-primary" type="button">Load CSV files</button>
+        <button id="btn-sample-empty" class="sv-btn" type="button">Explore with sample data</button>
+      </div>
+      <p class="sv-empty-hint">…or drag &amp; drop CSV files anywhere on this page.</p>
+    </section>
+
+    <div id="dashboard" hidden>
+      <div id="filter-row" class="sv-filter-row" hidden></div>
+      <div id="kpi-row" class="sv-kpi-row"></div>
+
+      <div class="sv-grid">
+        <section id="card-trend" class="sv-card sv-span-2" aria-label="Spending over time"></section>
+        <section id="card-category" class="sv-card sv-span-2" aria-label="Spending by category"></section>
+        <section id="card-top-merchants" class="sv-card" aria-label="Top merchants"></section>
+        <section id="card-averages" class="sv-card" aria-label="Averages"></section>
+        <section id="card-merchants-table" class="sv-card sv-span-2" aria-label="All merchants"></section>
+        <section id="card-transactions" class="sv-card sv-span-2" aria-label="Transactions"></section>
+        <section id="card-metadata" class="sv-card sv-span-2" aria-label="Dataset metadata"></section>
+      </div>
+    </div>
+  </main>
+
+  <div id="dropzone" class="sv-dropzone" hidden><div>Drop CSV files to import</div></div>
+  <div id="toast" class="sv-toast" role="status" hidden></div>
+
+  <script src="js/namespace.js"></script>
+  <script src="js/csv.js"></script>
+  <script src="js/parsers.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/mock-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
